@@ -1,0 +1,14 @@
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/bin/Debug/netcoreapp2.2/DatingApp.API.deps.json
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/bin/Debug/netcoreapp2.2/DatingApp.API.runtimeconfig.json
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/bin/Debug/netcoreapp2.2/DatingApp.API.runtimeconfig.dev.json
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/bin/Debug/netcoreapp2.2/DatingApp.API.dll
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/bin/Debug/netcoreapp2.2/DatingApp.API.pdb
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.csprojAssemblyReference.cache
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.csproj.CoreCompileInputs.cache
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.RazorAssemblyInfo.cache
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.RazorAssemblyInfo.cs
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.AssemblyInfoInputs.cache
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.AssemblyInfo.cs
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.RazorTargetAssemblyInfo.cache
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.dll
+/Users/jearlywine/dev/learning/udemy/dotnetclass/DatingApp/DatingApp.API/obj/Debug/netcoreapp2.2/DatingApp.API.pdb
