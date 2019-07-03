@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using DatingApp.API.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DatingApp.API
 {
@@ -32,6 +35,20 @@ namespace DatingApp.API
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    var signingKey = Encoding.UTF8.GetBytes( Configuration.GetSection("AppSettings:Token").Value );
+                    Console.WriteLine("signingKey: ", signingKey);
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(signingKey),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                })
+            ;
+            services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,11 +67,12 @@ namespace DatingApp.API
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-            // app.UseHttpsRedirection();
-            app.UseMvc();
 
+            // app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseMvc();
         }
     }
 }
