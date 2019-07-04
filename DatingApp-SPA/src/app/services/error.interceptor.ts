@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     return next.handle(req).pipe(
 
       catchError(error => {
@@ -16,7 +17,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
           const applicationError = error.headers.get('Application-Error');
           if (applicationError) {
-            console.log('ErrorIntercepter.intercept() error: ', error);
             return throwError(applicationError);
           }
 
@@ -35,6 +35,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       })
 
     );
+
   }
 }
 

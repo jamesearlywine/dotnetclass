@@ -1,0 +1,8 @@
+.navbar .dropdown {
+  cursor: pointer;
+}
+.navbar .dropdown-menu {
+  top: 37px !important;
+  left: auto !important;
+  right: 0 !important;
+}
