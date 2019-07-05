@@ -12,7 +12,7 @@ import { User } from 'src/app/_models/user';
 export class UserService {
 
   endpoints = {
-    getUsers: '/users'
+    users: '/users'
   };
 
   constructor(
@@ -20,15 +20,20 @@ export class UserService {
   ) { }
 
   getUsers(): Observable<User[]> {
-    const url = environment.webservices.baseUrl + this.endpoints.getUsers;
+    const url = environment.webservices.baseUrl + this.endpoints.users;
 
     return this.httpClient.get<User[]>(url);
   }
 
   getUser(id: number): Observable<User> {
-    const url = environment.webservices.baseUrl + this.endpoints.getUsers + '/' + id;
+    const url = environment.webservices.baseUrl + this.endpoints.users + '/' + id;
 
     return this.httpClient.get<User>(url);
   }
 
+  updateUser(id: number, user: User): Observable<any> {
+    const url = environment.webservices.baseUrl + this.endpoints.users + '/' + id;
+
+    return this.httpClient.put(url, user);
+  }
 }
