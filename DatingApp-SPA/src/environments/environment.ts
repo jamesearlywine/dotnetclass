@@ -5,9 +5,7 @@
 export const environment = {
   production: false,
   webservices: {
-    auth: {
-      baseUrl: 'https://localhost:5002/api'
-    }
+    baseUrl: 'https://localhost:5002/api'
   }
 };
 

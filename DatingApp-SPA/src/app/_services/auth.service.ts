@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserForLogin } from '../models/user';
+import { UserForLogin } from '../_models/user';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+import { AlertifyService } from './alertify.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,9 @@ export class AuthService {
   public loggedInUser: any = {};
 
   constructor(
-    public httpClient: HttpClient
+    public httpClient: HttpClient,
+    public router: Router,
+    public alertifyService: AlertifyService
   ) {
     this.init();
   }
@@ -43,9 +47,6 @@ export class AuthService {
           }
         : {}
       ;
-
-      console.log('decodedToken: ', this.decodedToken);
-      console.log('this.loggedInUser: ', this.loggedInUser);
     });
 
     // fetch token from local storage, update/init authService if it exists
@@ -56,12 +57,12 @@ export class AuthService {
   }
 
   public register(data: any) {
-    const url = environment.webservices.auth.baseUrl + this.endpoints.register;
+    const url = environment.webservices.baseUrl + this.endpoints.register;
     return this.httpClient.post(url, data);
   }
 
   public login(userForLogin: UserForLogin) {
-    const url = environment.webservices.auth.baseUrl + this.endpoints.login;
+    const url = environment.webservices.baseUrl + this.endpoints.login;
     return this.httpClient.post(url, userForLogin)
       .pipe(
         tap((response: any) => {
@@ -77,6 +78,8 @@ export class AuthService {
   public logout() {
     localStorage.removeItem('token');
     this.token$.next(null);
+    this.alertifyService.message('Logged out.');
+    this.router.navigate(['/']);
   }
 
   get isLoggedIn() {

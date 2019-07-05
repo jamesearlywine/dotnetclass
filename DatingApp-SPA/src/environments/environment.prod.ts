@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  webservices: {
+    baseUrl: 'https://localhost:5002/api'
+  }
 };
