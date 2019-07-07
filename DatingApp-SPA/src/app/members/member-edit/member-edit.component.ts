@@ -77,4 +77,25 @@ export class MemberEditComponent implements OnInit {
     );
   }
 
+  onCurrentMainPhotoUpdated(photo) {
+    this.member.photoUrl = photo.url;
+    this.authService.updateLoggedInUser({
+      photoUrl: photo.url
+    });
+  }
+
+  onDeletePhoto(photo) {
+    this.userService.deletePhoto(
+      this.authService.loggedInUser.id,
+      photo.id
+    ).subscribe(
+      response => {
+        this.member.photos = this.member.photos.filter(p => p.id !== photo.id);
+      },
+      error => {
+        this.alertify.error(error);
+      }
+    )
+  }
+
 }

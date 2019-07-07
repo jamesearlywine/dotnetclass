@@ -16,6 +16,9 @@
     </ul>
 
     <div dropdown *ngIf="isLoggedIn" class="dropdown">
+      <span class="user-photo-container mr-1">
+        <img [src]="authService.loggedInUser?.photoUrl" alt="user image">
+      </span>
       <a dropdownToggle class="dropdown-toggle text-light" (click)="false">
         Welcome {{authService.loggedInUser?.username | titlecase}}
       </a>

@@ -24,7 +24,6 @@ export class AuthService {
   public token = null;
 
   public decodedToken: any;
-
   public loggedInUser: any = {};
 
   constructor(
@@ -42,10 +41,9 @@ export class AuthService {
       this.decodedToken = this.jwtHelper.decodeToken(token);
       this.loggedInUser = this.decodedToken
         ? {
-            ...this.loggedInUser,
-            username: this.decodedToken.unique_name
+            ...JSON.parse( localStorage.getItem('user') )
           }
-        : {}
+        : null
       ;
     });
 
@@ -67,6 +65,7 @@ export class AuthService {
       .pipe(
         tap((response: any) => {
           if (response.token) {
+            this.updateLoggedInUser(response.user);
             localStorage.setItem('token', response.token);
             this.token$.next(response.token);
           }
@@ -77,6 +76,7 @@ export class AuthService {
 
   public logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.token$.next(null);
     this.alertifyService.message('Logged out.');
     this.router.navigate(['/']);
@@ -84,5 +84,13 @@ export class AuthService {
 
   get isLoggedIn() {
     return !this.jwtHelper.isTokenExpired(this.token);
+  }
+
+  updateLoggedInUser(userPartial: any) {
+    this.loggedInUser = {
+      ...this.loggedInUser,
+      ...userPartial
+    };
+    localStorage.setItem('user', JSON.stringify(this.loggedInUser));
   }
 }

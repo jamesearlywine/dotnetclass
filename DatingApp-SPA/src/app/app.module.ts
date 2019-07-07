@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { appRoutes } from './routes';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -22,6 +23,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 import { AuthGuard } from 'src/app/_guards/auth.guard';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
@@ -40,12 +42,13 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.gu
       NavComponent,
       HomeComponent,
       RegisterComponent,
+      ListsComponent,
+      MessagesComponent,
       MemberListComponent,
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      ListsComponent,
-      MessagesComponent
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
@@ -54,6 +57,7 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.gu
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       NgxGalleryModule,
+      FileUploadModule,
       JwtModule.forRoot({
         config: {
           tokenGetter: () => {

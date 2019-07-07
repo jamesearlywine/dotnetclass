@@ -20,7 +20,6 @@ export class NavComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private alertifyService: AlertifyService,
-    private userService: UserService,
     public router: Router
   ) { }
 

@@ -92,7 +92,11 @@
             <tab heading="Edit Photos">
               <h4>Photos</h4>
               <p>
-                ..photo edit will go here..
+                <app-photo-editor
+                  [photos]="member.photos"
+                  (currentMainPhotoUpdated)="onCurrentMainPhotoUpdated($event)"
+                  (deletePhoto)="onDeletePhoto($event)"
+                ></app-photo-editor>
               </p>
             </tab>
 

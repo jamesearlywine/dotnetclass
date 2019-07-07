@@ -6,3 +6,9 @@
   left: auto !important;
   right: 0 !important;
 }
+
+.user-photo-container img {
+  max-height: 50px;
+  border: 2px solid white;
+  display: inline;
+}
