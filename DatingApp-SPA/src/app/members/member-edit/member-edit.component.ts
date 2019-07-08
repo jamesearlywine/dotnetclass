@@ -78,6 +78,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   onCurrentMainPhotoUpdated(photo) {
+    if (!photo) {return;}
     this.member.photoUrl = photo.url;
     this.authService.updateLoggedInUser({
       photoUrl: photo.url
@@ -95,7 +96,7 @@ export class MemberEditComponent implements OnInit {
       error => {
         this.alertify.error(error);
       }
-    )
+    );
   }
 
 }

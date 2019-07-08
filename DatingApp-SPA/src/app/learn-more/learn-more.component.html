@@ -1,0 +1,12 @@
+<div class="container mt-5">
+
+  <div *ngIf="!registering" style="text-align: center">
+    <h1>Dating App is lots of fun!</h1>
+    <p class="lead">Come on in to view your matches... All you need to do is sign up!</p>
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg mr-2" [routerLink]="['/register']" [queryParams]="{registering: 'true'}">Register</button>
+    </div>
+  </div>
+</div>
+
+

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserForLogin } from '../_models/user';
+import { UserForLogin, User } from '../_models/user';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -54,9 +54,9 @@ export class AuthService {
     }
   }
 
-  public register(data: any) {
+  public register(user: User) {
     const url = environment.webservices.baseUrl + this.endpoints.register;
-    return this.httpClient.post(url, data);
+    return this.httpClient.post(url, user);
   }
 
   public login(userForLogin: UserForLogin) {

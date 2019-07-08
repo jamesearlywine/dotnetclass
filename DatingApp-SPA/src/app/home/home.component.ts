@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,24 +10,46 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
   registering = false;
+  queryParams: any;
 
   constructor(
-    public http: HttpClient
+    public http: HttpClient,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.activatedRoute.queryParams
+      .subscribe(queryParams => {
+        this.queryParams = queryParams;
+        this.registering = this.queryParams['registering'] === 'true'
+          ? true
+          : false
+        ;
+      })
+    ;
   }
 
   register() {
-    this.registering = true;
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: {registering: true},
+      }
+    );
   }
 
   onCancel() {
-    console.log('HomeComponent.onCancel()');
-    this.registering = false;
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: {},
+      }
+    );
   }
   onComplete() {
-    console.log('HomeComponent.onComplete()');
     this.registering = false;
   }
 

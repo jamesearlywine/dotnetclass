@@ -1,0 +1,16 @@
+.invalid-feedback {
+  display: block;
+}
+
+.form-group {
+  position: relative;
+}
+.form-group.required::after {
+  display: inline-block;
+  content: '*';
+  color: grey;
+  font-size: 1.2em;
+  position: absolute;
+  top: -1px;
+  right: -12px;
+}

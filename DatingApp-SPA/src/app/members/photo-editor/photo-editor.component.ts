@@ -56,6 +56,7 @@ export class PhotoEditorComponent implements OnInit {
           isMain: res.isMain
         };
         this.photos.push(photo);
+        this.updateCurrentMainPhoto();
       }
     };
   }
@@ -80,7 +81,9 @@ export class PhotoEditorComponent implements OnInit {
   }
 
   public updateCurrentMainPhoto() {
+    if (!this.photos) { return; }
     this.currentMainPhoto = this.photos.filter(p => p.isMain === true)[0];
+    if (!this.currentMainPhoto) { return; }
     this.currentMainPhotoUpdated.emit(this.currentMainPhoto);
   }
 

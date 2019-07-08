@@ -1,13 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import  {
+          BsDropdownModule,
+          BsDatepickerModule,
+          TabsModule,
+          PaginationModule ,
+          ButtonsModule
+        } from 'ngx-bootstrap';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 import { appRoutes } from './routes';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -15,6 +22,7 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { LearnMoreComponent } from './learn-more/learn-more.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 
@@ -42,20 +50,26 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.gu
       NavComponent,
       HomeComponent,
       RegisterComponent,
+      LearnMoreComponent,
       ListsComponent,
       MessagesComponent,
       MemberListComponent,
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
       BsDropdownModule.forRoot(),
+      BsDatepickerModule.forRoot(),
       TabsModule.forRoot(),
+      PaginationModule.forRoot(),
+      ButtonsModule.forRoot(),
       NgxGalleryModule,
       FileUploadModule,
       JwtModule.forRoot({

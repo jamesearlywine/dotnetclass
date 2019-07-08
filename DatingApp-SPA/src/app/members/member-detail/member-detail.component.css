@@ -14,3 +14,7 @@
   border-top: none;
 }
 
+.empty-area {
+  min-height: 100px;
+  background: #efefef;
+}

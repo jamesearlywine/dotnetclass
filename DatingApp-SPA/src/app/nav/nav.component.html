@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary noselect">
   <div class="container">
 
-    <a class="navbar-brand" href="#" (click)="false">Dating App</a>
+    <a class="navbar-brand" [routerLink]="['/']">Dating App</a>
 
     <ul *ngIf="isLoggedIn" class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active" >
@@ -17,7 +17,7 @@
 
     <div dropdown *ngIf="isLoggedIn" class="dropdown">
       <span class="user-photo-container mr-1">
-        <img [src]="authService.loggedInUser?.photoUrl" alt="user image">
+        <img [src]="authService.loggedInUser?.photoUrl || '/assets/user.png'" alt="user image">
       </span>
       <a dropdownToggle class="dropdown-toggle text-light" (click)="false">
         Welcome {{authService.loggedInUser?.username | titlecase}}

@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DatingApp.API.Helpers
 {
-    public class LogUserActivity : IAsyncActionFilter
+    public class UpdateUserLastActive : IAsyncActionFilter
     {
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
